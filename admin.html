@@ -142,10 +142,19 @@
             border-radius: 8px;
             font-weight: 500;
             transition: all 0.3s;
+            cursor: pointer;
         }
         .btn-primary-custom:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .btn-secondary {
+            background: #6c757d;
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
         }
         .contact-card {
             background: white;
@@ -154,14 +163,58 @@
             margin-bottom: 15px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal.show {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-dialog {
+            margin: auto;
+        }
         .modal-content {
             border-radius: 15px;
             border: none;
+            background: white;
         }
         .modal-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border-radius: 15px 15px 0 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-body {
+            padding: 20px;
+        }
+        .modal-footer {
+            padding: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        .btn-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+        .btn-close:hover {
+            opacity: 1;
         }
         .form-control, .form-select {
             border-radius: 8px;
@@ -344,7 +397,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Criar Novo Fluxo</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close" onclick="document.getElementById('createFlowModal').style.display='none'">✕</button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
@@ -373,7 +426,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" onclick="document.getElementById('createFlowModal').style.display='none'">Cancelar</button>
                     <button type="button" class="btn btn-primary-custom" onclick="createFlow()">Criar Fluxo</button>
                 </div>
             </div>
@@ -386,7 +439,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Adicionar Contato</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close" onclick="document.getElementById('createContactModal').style.display='none'">✕</button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
@@ -403,7 +456,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" onclick="document.getElementById('createContactModal').style.display='none'">Cancelar</button>
                     <button type="button" class="btn btn-primary-custom" onclick="createContact()">Adicionar</button>
                 </div>
             </div>

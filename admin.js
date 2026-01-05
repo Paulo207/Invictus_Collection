@@ -163,8 +163,11 @@ async function loadContacts() {
 
 // Show Create Flow Modal
 function showCreateFlowModal() {
-    const modal = new bootstrap.Modal(document.getElementById('createFlowModal'));
-    modal.show();
+    const modal = document.getElementById('createFlowModal');
+    if (modal) {
+        modal.style.display = 'block';
+        modal.classList.add('show');
+    }
 }
 
 // Create Flow
@@ -209,7 +212,11 @@ async function createFlow() {
         });
         
         if (response.ok) {
-            bootstrap.Modal.getInstance(document.getElementById('createFlowModal')).hide();
+            const modal = document.getElementById('createFlowModal');
+            if (modal) {
+                modal.style.display = 'none';
+                modal.classList.remove('show');
+            }
             document.getElementById('flowName').value = '';
             document.getElementById('flowDescription').value = '';
             document.getElementById('flowKeyword').value = '';
@@ -273,8 +280,11 @@ async function deleteFlow(flowId) {
 
 // Show Create Contact Modal
 function showCreateContactModal() {
-    const modal = new bootstrap.Modal(document.getElementById('createContactModal'));
-    modal.show();
+    const modal = document.getElementById('createContactModal');
+    if (modal) {
+        modal.style.display = 'block';
+        modal.classList.add('show');
+    }
 }
 
 // Create Contact
@@ -302,7 +312,11 @@ async function createContact() {
         });
         
         if (response.ok) {
-            bootstrap.Modal.getInstance(document.getElementById('createContactModal')).hide();
+            const modal = document.getElementById('createContactModal');
+            if (modal) {
+                modal.style.display = 'none';
+                modal.classList.remove('show');
+            }
             document.getElementById('contactName').value = '';
             document.getElementById('contactPhone').value = '';
             document.getElementById('contactEmail').value = '';
