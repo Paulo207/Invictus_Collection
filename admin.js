@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Navigation
-function showSection(sectionId) {
+function showSection(sectionId, clickedElement) {
     // Hide all sections
     document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
@@ -24,7 +24,9 @@ function showSection(sectionId) {
     document.getElementById(sectionId).classList.add('active');
     
     // Add active to clicked nav item
-    event.target.closest('.nav-item').classList.add('active');
+    if (clickedElement) {
+        clickedElement.classList.add('active');
+    }
     
     // Load data for the section
     if (sectionId === 'dashboard') {
