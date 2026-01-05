@@ -334,7 +334,23 @@ async function createContact() {
 
 // View Messages
 async function viewMessages(contactId) {
-    showSection('messages');
+    // Manually update UI state
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+    });
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    document.getElementById('messages').classList.add('active');
+    
+    // Find and activate the messages nav item
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        if (item.textContent.includes('Mensagens')) {
+            item.classList.add('active');
+        }
+    });
     
     try {
         const messagesResponse = await fetch(`${API_BASE}/api/messages/${contactId}`);
